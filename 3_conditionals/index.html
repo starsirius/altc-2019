@@ -1,0 +1,74 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="How to represent data with JavaScript">
+    <title>ALTC 2019 Lesson 2: Data Types and Variables</title>
+    <style>
+      body {
+        font-family: Helvetica, Arial, sans-serif;
+      }
+      h1 {
+        text-align: center;
+        text-transform: uppercase;
+        margin-bottom: 100px;
+      }
+      .collection-wrapper {
+        display: flex;
+      }
+      .thumbnail-wrapper, .full-image-wrapper {
+        width: 50%;
+      }
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>My Collection</h1>
+
+    <div class="collection-wrapper">
+      <div id="thumbnail-wrapper" class="thumbnail-wrapper">
+        <img src="https://d32dm0rphc51dk.cloudfront.net/th20S3QPkaVC-COm41zHcQ/square.jpg" />
+        <img src="https://d32dm0rphc51dk.cloudfront.net/gZsirjz6rLKvwCmVrL1saA/square.jpg" />
+        <img src="https://d32dm0rphc51dk.cloudfront.net/tWV1XclXfbqZDy338CoMfg/square.jpg" />
+      </div>
+      <div class="full-image-wrapper">
+        <img id="full-image" />
+      </div>
+    </div>
+
+    <script>
+      // When hovering on a thumbnail, display the full image on the right.
+      var fullImage = document.getElementById("full-image");
+      var thumbnailWrapper = document.getElementById("thumbnail-wrapper");
+
+      thumbnailWrapper.addEventListener("mouseover", function(event) {
+        if (event.target.tagName !== "IMG") return;
+        fullImage.src = event.target.src.replace("square", "large");
+
+        // unset any animation set previously
+        fullImage.style.animation = "";
+
+        fullImage.onload = function() {
+          // This function gets called when the full image has finished loading.
+          // TODO: Check the dimension of the loaded full image. If it's square,
+          // make it spin!
+          //
+          // You can get the height/width of the image with
+          //
+          //   fullImage.height
+          //   fullImage.width
+          //
+          // You can apply the spin animation by
+          //
+          //   fullImage.style.animation = "3s spin";
+          //
+        }
+      });
+    </script>
+  </body>
+</html>
